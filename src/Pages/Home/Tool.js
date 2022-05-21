@@ -7,12 +7,13 @@ const Tool = ({ tool}) => {
             <figure className="px-10 pt-10">
                 <img src={img} alt="Shoes" className="rounded-xl" />
             </figure>
-            <div className="card-body items-center text-center">
+            <div className="card-body items-center text-left">
                 <h2 className="card-title">{name}</h2>
                 <p>Price:${price} per unit</p>
                 <p>Available Quantity: {availableQuantity}</p>
                 <p>Mini,um Order: {minimumOrder}</p>
                 <p>Description: <small>{description}</small></p>
+                <button className='btn btn-primary'>purchase</button>
             </div>
         </div>
     );
