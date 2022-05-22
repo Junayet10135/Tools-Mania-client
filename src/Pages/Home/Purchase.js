@@ -14,7 +14,7 @@ const Purchase = () => {
             .then(data => setProduct(data));
     }, [isReload, purchaseId]);
     return (
-        <div className="card lg:max-w-lg bg-base-100 shadow-xl my-20 ">
+        <div className="card lg:max-w-lg bg-base-100 shadow-xl my-20  min-h-screen">
             <figure className="px-10 pt-10">
                 <img src={img} alt="Shoes" className="rounded-xl" />
             </figure>
