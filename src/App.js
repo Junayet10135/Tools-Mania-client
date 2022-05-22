@@ -19,6 +19,7 @@ import ManageAllProduct from './Pages/Dashboard/ManageAllProduct';
 import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
 import AddAProduct from './Pages/Dashboard/AddAProduct';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
+import NotFound from './Pages/Shared/NotFound';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path='makeAdmin' element={<MakeAdmin></MakeAdmin>}></Route>
         </Route>
       </Routes>
+      
       <Footer></Footer>
       <ToastContainer />
     </div>
