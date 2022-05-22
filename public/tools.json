@@ -1,57 +1,56 @@
 [
     {
         "id": 1,
-        "name": "APPLES",
-        "price": "13-15 / BOX",
-	    "availableQuantity": "1100 BOXES",
+        "name": "Phillips Screwdriver (Non-Magnetic)",
+        "price": "15 / BOX",
+	    "availableQuantity": 1000 ,
         "minimumOrder" : 50,
-        "description": "Indoneasia Market Selected Quality Fresh Red Paper Bagged FUJI Apple,price will 12-15 usd per BOX.",
-        "img": "https://i.ibb.co/zsqMY8s/Apples.jpg"
+        "description": "This tool is probably the most important to have. Pretty much all computer parts are fastened to the computer through some form of a screw.",
+        "img": "https://i.ibb.co/cX8fXM8/Phillips-Screwdriver.jpg"
     },
     {
         "id": 2,
-        "name": "AVOCADO",
-        "price": "10-12 / BOX",
-	    "availableQuantity": "1000 BOXES",
-        "minimumOrder" : 50,
-        "description": "Export New Season New Crop Fresh Fruit Avocado,price will 10-12 usd per BOX, 1000 Boxes in Stock.",
-        "img": "https://i.ibb.co/1vTkb9G/avocado.jpg"
+        "name": "Zip Ties",
+        "price": "2 / piece",
+	    "availableQuantity": 5000,
+        "minimumOrder" : 100,
+        "description": "The use of small plastic zip ties can make all the difference between a jumbled mess of wires and a professional-looking build.",
+        "img": "https://i.ibb.co/wz8YCnx/Zip-Ties.jpg"
     },
     {
         "id": 3,
-        "name": "BLUE BERRIES",
-        "price": "2800 / TON",
-	    "availableQuantity": "15 TONS",
+        "name": "Hex Driver",
+        "price": "50 / piece ",
+	    "availableQuantity": 2000,
         "minimumOrder" : 50,
-	    "Supplier": "ISMAIL YUSUF",
-        "description": "Grade a Wild Culticated 100% Natrual Organic Bulk IQF BLueberry ,price will be 2800 usd per TON.",
-        "img": "https://i.ibb.co/dW0VfCS/Blueberries.jpg"
+        "description": "Not many people have seen these outside of a computer toolkit. A hex driver looks like a screwdriver except it has a head like a socket wrench.",
+        "img": "https://i.ibb.co/VQPv2R1/Hex-Driver.jpg"
     },
     {
         "id": 4,
-        "name": "BROCCOLI",
-        "price": "650-800 / TON",
-	    "availableQuantity": "10 TONS",
+        "name": "Tweezers",
+        "price": "10 / piece",
+	    "availableQuantity": 1500,
         "minimumOrder" : 50,
-        "description": "Frozen Vegetable Agricultural Industry Hot Sale Brc Green Broccoli,Price 650-800 usd per TON ",
-        "img": "https://i.ibb.co/Mc8WY6F/Broccoli.jpg"
+        "description": "The most frustrating aspect of building a computer is dropping a screw inside the case, especially if it rolls into the tightest corner so you can't reach it. ",
+        "img": "https://i.ibb.co/6sJyBhC/Tweezers.jpg"
     },
     {
         "id": 5,
-        "name": "PEAS",
-        "price": "5.5 -7 /KG",
-	    "availableQuantity": "20 KG",
-        "minimumOrder" : 50,
-        "description": "Fresh New Season New Crop Fresh Vegtable Peas,which price will be 5.5-7 usd per KG , 20 KG in Stock.",
-        "img": "https://i.ibb.co/wBzdWQw/Peas.jpg"
+        "name": "Isopropyl Alcohol (91%)",
+        "price": "10 /L",
+	    "availableQuantity": 500,
+        "minimumOrder" : 30,
+        "description": "Isopropyl alcohol is probably one of the most important cleaners to use with a computer.  It is typically used in conjunction with the next couple of items.",
+        "img": "https://i.ibb.co/0MtGTT1/Isopropyl-Alcohol.jpg"
     },
     {
         "id": 6,
-        "name": "POTATO",
-        "price": "200-300 / TON",
-	    "availableQuantity": "30 TONS",
+        "name": "Canned Air/Vacuum",
+        "price": "100 / piece",
+	    "availableQuantity": 800,
         "minimumOrder" : 50,
-        "description": "High Quality New Season New Crop Fresh Vegtable Potato,which price will be 200-300 usd per TON.",
-        "img": "https://i.ibb.co/zhHFHVP/Potato.jpg"
+        "description": "Again, dust is a major problem for computer systems over time. If this dust gets bad enough, it can cause overheating and potential part failures.",
+        "img": "https://i.ibb.co/3N1yS43/Canned-Air.jpg"
     }
 ]
