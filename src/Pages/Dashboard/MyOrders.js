@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
 const MyOrders = ({data}) => {
+    const [user] = useAuthState(auth);
+    const email = user?.email;
     const { isLoading, error, data: orders, refetch } = useQuery(['orders'], () =>
         fetch('http://localhost:5000/order')
             .then(res => res.json())
@@ -11,9 +15,11 @@ const MyOrders = ({data}) => {
     if (isLoading) {
         return <Loading></Loading>
     }
+
+    const remaining = orders.filter(order => order.email === email);
     return (
         <div>
-            <h2>My AOrders: {orders.length}</h2>
+            <h2>My Orders: {remaining.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -28,7 +34,7 @@ const MyOrders = ({data}) => {
                     </thead>
                     <tbody>
                         {
-                            orders.map((order, index) => <tr>
+                            remaining.map((order, index) => <tr>
                                 <th>{index + 1}</th>
                                 <td>{order.name}</td>
                                 <td>{order.tool}</td>

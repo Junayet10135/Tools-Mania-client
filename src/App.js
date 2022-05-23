@@ -20,6 +20,7 @@ import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
 import AddAProduct from './Pages/Dashboard/AddAProduct';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import NotFound from './Pages/Shared/NotFound';
+import RequireAdmin from './Pages/LogIn/RequireAdmin';
 
 function App() {
   return (

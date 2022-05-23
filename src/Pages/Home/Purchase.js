@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Purchase = () => {
+    const [error , setError] = useState('');
     const { purchaseId } = useParams();
     const [user] = useAuthState(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -37,33 +38,40 @@ const Purchase = () => {
             phone: event.target.phone.value
         }
 
-        const restAvailableQuantity =availableQuantity - order.quantity;
+        if (order.quantity > minimumOrder && availableQuantity > order.quantity){
 
-        fetch('http://localhost:5000/order',  {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(order)
-        })
-        .then(res=>res.json())
-        .then(data => {
-            console.log(data);
-            fetch(`http://localhost:5000/tools/${purchaseId}`, {
-                method: 'PATCH',
+            setError('');
+
+            const restAvailableQuantity = availableQuantity - order.quantity;
+            fetch('http://localhost:5000/order', {
+                method: 'POST',
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify({restAvailableQuantity})
+                body: JSON.stringify(order)
             })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setIsReload(false);
-            })
-                
-        })
-        
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    fetch(`http://localhost:5000/tools/${purchaseId}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ restAvailableQuantity })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            setIsReload(false);
+                        })
+
+                })
+        }
+        else{
+            setError('Quantity should be order.quantity > minimumOrder && availableQuantity > order quantity ')
+        }
+        event.target.reset();
     }
     return (
         // <div className='hero min-h-screen'>
@@ -118,6 +126,8 @@ const Purchase = () => {
                             <span className="label-text">Quantity</span>
                         </label>
                         <input className='w-100 mb-2 px-10 py-2 shadow-xl border' type="text" name="quantity" placeholder='quantity' />
+                        <br />
+                        {error}
                         <br />
                         <label class="label">
                             <span className="label-text">Address</span>
