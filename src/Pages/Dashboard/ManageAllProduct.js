@@ -1,9 +1,55 @@
 import React from 'react';
+import { useQuery } from 'react-query';
+import Loading from '../Shared/Loading';
 
-const ManageAllProduct = () => {
+const ManageAllProduct = ({data}) => {
+    const { isLoading, error, data: tools, refetch } = useQuery(['tools'], () =>
+        fetch('http://localhost:5000/tools')
+            .then(res => res.json())
+    )
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
-            <h2>Hii , this is manage all product</h2>
+            <h2>All Tools: {tools.length}</h2>
+            <div className="overflow-x-auto">
+                <table className="table w-full">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>price</th>
+                            <th>Available quantity</th>
+                            <th>Minimum Order</th>  
+                            <th>DELETE</th>  
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            tools.map((tool, index) => <tr>
+                                <th>{index + 1}</th>
+                                <td><div className='avatar'>
+                                    <div className='w-8 rounded'>
+                                        <img src={tool.img} alt="" />
+                                    </div>
+                                </div></td>
+                                <td>{tool.name}</td>
+                                <td>{tool.price}</td>
+                                <td>{tool.availableQuantity}</td>
+                                <td>{tool.minimumOrder}</td>
+                                <td>
+                                    <label class="btn btn-xs btn-error">Delete</label>
+                                </td>
+                            </tr>)
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
