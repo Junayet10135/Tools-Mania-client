@@ -30,7 +30,8 @@ const Purchase = () => {
         const order = {
             
             email: user.email,
-            service: user.name,
+            name: user.displayName,
+            tool: event.target.tool.value,
             quantity: event.target.quantity.value,
             address: event.target.address.value,
             phone: event.target.phone.value
@@ -98,6 +99,11 @@ const Purchase = () => {
                 <div className='w-full mx-auto card lg:max-w-lg bg-base-100 shadow-xl p-10'>
                     <h2>Order For {name}</h2>
                     <form onSubmit={handlePlaceOrder}>
+                        <label class="label">
+                            <span className="label-text">Tool</span>
+                        </label>
+                        <input className='w-100 mb-2 px-10 py-2 shadow-xl border' type="text" value={name} name="tool" placeholder='Tool' required readOnly disabled />
+                        <br />
                         <label class="label">
                             <span className="label-text">Name</span>
                         </label>
