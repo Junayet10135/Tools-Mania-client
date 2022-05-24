@@ -8,8 +8,8 @@ const Banner = () => {
             backgroundImage: `url(${bg})`
         }}>
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <img src={banner} className="max-w-lg rounded-lg " alt='' />
-                <div>
+                <img src={banner} className="max-w-lg rounded-lg shadow-xl" alt='' />
+                <div className=''>
                     <h1 className="text-5xl font-bold"> Here Common Tools Useful for Working With Computers</h1>
                      
                 </div>

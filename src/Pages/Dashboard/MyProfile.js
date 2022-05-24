@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import avatar from '../../Assets/Images/avatar.jpg'
@@ -8,22 +8,32 @@ import Loading from '../Shared/Loading';
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
+    const [profiles, setProfiles] = useState([]);
     const email = user?.email;
     const navigate = useNavigate();
     console.log(user);
 
-
-    const { isLoading, error, data: profiles, refetch } = useQuery(['profiles'], () =>
-        fetch(`http://localhost:5000/profile/${email}`
-        )
+    useEffect(() => {
+        fetch(`http://localhost:5000/profile/${email}`)
             .then(res => res.json())
-    )
-    refetch();
+            .then(data => {
+                setProfiles(data);
+                console.log(data);
+            })
+    }, [email])
 
 
-    if (isLoading) {
-        return <Loading></Loading>
-    }
+    // const { isLoading, error, data: profiles, refetch } = useQuery(['profiles'], () =>
+    //     fetch(`http://localhost:5000/profile/${email}`
+    //     )
+    //         .then(res => res.json())
+    // )
+
+
+
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
 
     const handleUpdate = () => {
         navigate('/dashboard/updateProfile')
@@ -38,7 +48,8 @@ const MyProfile = () => {
                 </div>
                 <div className='avatar online'>
                     <div className='w-24 rounded-full'>
-                        <img src={
+                        <img src={profiles?.image ?
+                            profiles.image :
                             user?.photoURL ?
                                 user.photoURL
                                 :
