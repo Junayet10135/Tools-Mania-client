@@ -8,16 +8,17 @@ import Loading from '../Shared/Loading';
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
+    const email = user?.email;
     const navigate = useNavigate();
     console.log(user);
 
 
     const { isLoading, error, data: profiles, refetch } = useQuery(['profiles'], () =>
-        fetch(`http://localhost:5000/profile/${user.email}`
+        fetch(`http://localhost:5000/profile/${email}`
         )
             .then(res => res.json())
     )
-
+    refetch();
 
 
     if (isLoading) {

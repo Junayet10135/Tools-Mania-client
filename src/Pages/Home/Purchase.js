@@ -8,6 +8,7 @@ const Purchase = () => {
     const [error , setError] = useState('');
     const { purchaseId } = useParams();
     const [user] = useAuthState(auth);
+    const [agree, setAgree] =useState(false);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [product, setProduct] = useState({});
     const [isReload, setIsReload] = useState(true);
@@ -25,6 +26,18 @@ const Purchase = () => {
             });
     }, [isReload, purchaseId]);
 
+    const handleOnChangeQuantity =event=>{
+
+        const quantity= event.target.value;
+        console.log(event.target.value);
+        if (quantity >= minimumOrder && quantity <= availableQuantity  ){
+            setAgree(true);
+        }
+        else{
+            setAgree(false)
+        }
+
+    }
 
     const handlePlaceOrder = event =>{
         event.preventDefault();
@@ -41,7 +54,7 @@ const Purchase = () => {
 
         
 
-        if (order.quantity === minimumOrder && availableQuantity === order.quantity){
+        if (order.quantity >= minimumOrder && order.quantity <= availableQuantity){
             setError('');
 
             const restAvailableQuantity = availableQuantity - order.quantity;
@@ -127,7 +140,7 @@ const Purchase = () => {
                         <label class="label">
                             <span className="label-text">Quantity</span>
                         </label>
-                        <input className='w-100 mb-2 px-10 py-2 shadow-xl border' type="text" name="quantity" placeholder='quantity' />
+                        <input onChange={handleOnChangeQuantity} className='w-100 mb-2 px-10 py-2 shadow-xl border' type="text" name="quantity" placeholder='quantity' />
                         <br />
                         {error}
                         <br />
@@ -142,7 +155,7 @@ const Purchase = () => {
                         <input className='w-100 mb-2 px-10 py-2 shadow-xl border' type="text" name="phone" placeholder='phone' />
                         <br />
                         <div className='text-center'>
-                            <input className='btn btn-primary' type="submit" value="Place Order" />
+                            <input disabled={!agree} className='btn btn-primary' type="submit" value="Place Order" />
                         </div>
                     </form>
                 </div>
