@@ -1,9 +1,16 @@
+import { updateProfile } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
-const AddAProduct = () => {
+const UpdateProfile = () => {
+    const [user] = useAuthState(auth);
+    const email = user.email;
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const navigate = useNavigate();
 
     const imageStorageKey = '65ba121eec3fcd4ef7e47dd2bb730502';
 
@@ -19,21 +26,17 @@ const AddAProduct = () => {
         })
             .then(res => res.json())
             .then(result => {
-               // console.log('imbb',result);
+                // console.log('imbb',result);
                 if (result.success) {
                     const img = result.data.url;
                     const tools = {
-                        name: data.name,
-                        price: data.price,
-                        availableQuantity: data.availableQuantity,
-                        minimumOrder: data.minimumOrder,
-                        description: data.description,
-                        img: img
+                        education: data.education,
+                        
                     }
                     console.log(tools);
                     // send to your database 
-                    fetch('http://localhost:5000/tools', {
-                        method: 'POST',
+                    fetch(`http://localhost:5000/profile/${email}`, {
+                        method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
                         },
@@ -42,37 +45,36 @@ const AddAProduct = () => {
                         .then(res => res.json())
                         .then(data => {
                             if (data) {
-                                toast.success('Product added successfully')
+                                toast.success('profile update successfully')
+                                navigate('/dashboard')
                                 data.reset();
                             }
                             else {
-                                toast.error('Failed to add the Product');
+                                toast.error('Failed to profile update');
                             }
                         })
 
                 }
 
             })
-        
-
-    }
+        }
     return (
         <div className='card-body'>
-            <h2 className='text-2xl'>Add A product</h2>
+            <h2 className='text-2xl'>Update Your Profile</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
-                        <span className="label-text">Name</span>
+                        <span className="label-text">Education</span>
                     </label>
                     <input
                         type="text"
-                        placeholder="Tool Name"
+                        placeholder="Education"
                         className="input input-bordered w-full max-w-xs"
-                        {...register("name", {
+                        {...register("education", {
                             required: {
                                 value: true,
-                                message: 'Name is Required'
+                                message: 'Education is Required'
                             }
                         })}
                     />
@@ -184,4 +186,4 @@ const AddAProduct = () => {
     );
 };
 
-export default AddAProduct;
+export default UpdateProfile;

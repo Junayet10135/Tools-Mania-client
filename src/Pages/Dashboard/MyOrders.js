@@ -54,6 +54,7 @@ const MyOrders = ({data}) => {
                             <th>quantity</th>
                             <th>address</th>
                             <th>Payment</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,7 +65,11 @@ const MyOrders = ({data}) => {
                                 <td>{order.tool}</td>
                                 <td>{order.quantity}</td>
                                 <td>{order.address}</td>
-                            </tr>)
+                                <td> <button class="btn btn-xs btn-success text-white">pay</button>
+                                </td>
+                                <td> <button class="btn btn-xs btn-error text-white">delete</button>
+                                </td>
+                                </tr>)
                         }
 
 

@@ -21,6 +21,7 @@ import AddAProduct from './Pages/Dashboard/AddAProduct';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import NotFound from './Pages/Shared/NotFound';
 import RequireAdmin from './Pages/LogIn/RequireAdmin';
+import UpdateProfile from './Pages/Dashboard/UpdateProfile';
 
 function App() {
   return (
@@ -38,12 +39,13 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}>
-          <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route path='myOrders' element={<MyOrders></MyOrders>}></Route>
           <Route path='addReview' element={<AddAReview></AddAReview>}></Route>
-          <Route path='profile' element={<MyProfile></MyProfile>}></Route>
+          <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='manageProduct' element={<ManageAllProduct></ManageAllProduct>}></Route>
           <Route path='manageOrders' element={<ManageAllOrders></ManageAllOrders>}></Route>
           <Route path='addProduct' element={<AddAProduct></AddAProduct>}></Route>
+          <Route path='updateProfile' element={<UpdateProfile></UpdateProfile>}></Route>
           <Route path='makeAdmin' element={<RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin>}></Route>
         </Route>
       </Routes>

@@ -25,6 +25,7 @@ const Purchase = () => {
             });
     }, [isReload, purchaseId]);
 
+
     const handlePlaceOrder = event =>{
         event.preventDefault();
         setIsReload(false);
@@ -38,8 +39,9 @@ const Purchase = () => {
             phone: event.target.phone.value
         }
 
-        if (order.quantity > minimumOrder && availableQuantity > order.quantity){
+        
 
+        if (order.quantity === minimumOrder && availableQuantity === order.quantity){
             setError('');
 
             const restAvailableQuantity = availableQuantity - order.quantity;
