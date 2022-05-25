@@ -5,7 +5,7 @@ const Reviews = () => {
     const [tools, setTools] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://nameless-citadel-30933.herokuapp.com/review')
             .then(res => res.json())
             .then(data => setTools(data));
     }, [setTools]);

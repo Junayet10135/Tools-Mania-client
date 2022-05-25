@@ -12,7 +12,7 @@ const stripePromise = loadStripe('pk_test_51L1ZEQIi2Sy9MG3Q2fNKv5kabh8GIS0VtiDpv
 const Payment = () => {
     const { id } = useParams();
     const [user] = useAuthState(auth);
-    const url = `http://localhost:5000/payment/${id}`;
+    const url = `https://nameless-citadel-30933.herokuapp.com/payment/${id}`;
 
     const { data: order, isLoading } = useQuery(['order', id], () => fetch(url, {
         method: 'GET'

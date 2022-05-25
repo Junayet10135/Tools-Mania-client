@@ -32,7 +32,7 @@ const AddAProduct = () => {
                     }
                     console.log(tools);
                     // send to your database 
-                    fetch('http://localhost:5000/tools', {
+                    fetch('https://nameless-citadel-30933.herokuapp.com/tools', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

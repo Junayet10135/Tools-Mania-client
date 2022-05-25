@@ -8,7 +8,7 @@ import Loading from '../Shared/Loading';
 const MakeAdmin = ({data}) => {
     const [u] =useAuthState(auth);
     const { isLoading, error, data: users, refetch } = useQuery(['users'], () =>
-        fetch('http://localhost:5000/user')
+        fetch('https://nameless-citadel-30933.herokuapp.com/user')
             .then(res => res.json())
     )
 
@@ -18,7 +18,7 @@ const MakeAdmin = ({data}) => {
 
     const handleAdmin =()=>{
 
-        fetch(`http://localhost:5000/user/admin/${u.email}`, {
+        fetch(`https://nameless-citadel-30933.herokuapp.com/user/admin/${u.email}`, {
             method: 'PUT'
         })
         .then(res => res.json())
@@ -30,7 +30,7 @@ const MakeAdmin = ({data}) => {
     }
     return (
         <div>
-            <h2>All Users: {users.length}</h2>
+            <h2 className='text-2xl my-4 text-center'>All Users: {users.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

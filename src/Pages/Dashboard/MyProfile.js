@@ -14,7 +14,7 @@ const MyProfile = () => {
     console.log(user);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/profile/${email}`)
+        fetch(`https://nameless-citadel-30933.herokuapp.com/profile/${email}`)
             .then(res => res.json())
             .then(data => {
                 setProfiles(data);
@@ -24,7 +24,7 @@ const MyProfile = () => {
 
 
     // const { isLoading, error, data: profiles, refetch } = useQuery(['profiles'], () =>
-    //     fetch(`http://localhost:5000/profile/${email}`
+    //     fetch(`https://nameless-citadel-30933.herokuapp.com/profile/${email}`
     //     )
     //         .then(res => res.json())
     // )
@@ -43,8 +43,8 @@ const MyProfile = () => {
         <div>
             <div className='flex justify-between my-5 p-5 shadow-xl rounded-md'>
                 <div>
-                    <h2 className='text-3xl'><span className='text-4xl font-bold uppercase'>Name: </span> {user?.displayName}</h2>
-                    <h2 className='text-3xl'> <span className='text-4xl font-bold uppercase'>Email:  </span>{user?.email}</h2>
+                    <h2 className='text-2xl'><span className='text-2xl font-bold uppercase'>Name: </span> {user?.displayName}</h2>
+                    <h2 className='text-2xl'> <span className='text-2xl font-bold uppercase'>Email:  </span>{user?.email}</h2>
                 </div>
                 <div className='avatar online'>
                     <div className='w-24 rounded-full'>

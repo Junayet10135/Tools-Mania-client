@@ -4,16 +4,17 @@ import Loading from '../Shared/Loading';
 
 const ManageAllProduct = ({data}) => {
     const { isLoading, error, data: tools, refetch } = useQuery(['tools'], () =>
-        fetch('http://localhost:5000/tools')
+        fetch('https://nameless-citadel-30933.herokuapp.com/tools')
             .then(res => res.json())
     )
 
     if (isLoading) {
         return <Loading></Loading>
     }
+
     return (
         <div>
-            <h2>All Tools: {tools.length}</h2>
+            <h2 className='text-2xl my-4 text-center'>All Tools: {tools.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -41,7 +42,7 @@ const ManageAllProduct = ({data}) => {
                                 <td>{tool.availableQuantity}</td>
                                 <td>{tool.minimumOrder}</td>
                                 <td>
-                                    <label class="btn btn-xs btn-error">Delete</label>
+                                   <label class="btn btn-xs btn-error text-white modal-button">delete</label>
                                 </td>
                             </tr>)
                         }

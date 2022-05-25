@@ -9,7 +9,7 @@ const AddAReview = () => {
             ratings: event.target.ratings.value,
             description: event.target.description.value,
         }
-        fetch('http://localhost:5000/review', {
+        fetch('https://nameless-citadel-30933.herokuapp.com/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -27,7 +27,7 @@ const AddAReview = () => {
     }
     return (
         <div className='w-full mx-auto card lg:max-w-lg bg-base-100 shadow-xl p-10 mt-20'>
-            <h2>Add A Review</h2>
+            <h2 className='text-2xl my-4 text-center'>Add A Review</h2>
             <form onSubmit={handlePlaceOrder} >
                 <label class="label">
                     <span className="label-text">Name</span>

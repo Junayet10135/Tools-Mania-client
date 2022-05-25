@@ -5,7 +5,7 @@ import Loading from '../Shared/Loading';
 const ManageAllOrders = ({data}) => {
     const [delivered, setDelivered] = useState(false);
     const { isLoading, error, data: orders, refetch } = useQuery(['orders'], () =>
-        fetch('http://localhost:5000/order')
+        fetch('https://nameless-citadel-30933.herokuapp.com/order')
             .then(res => res.json())
     )
 
@@ -18,7 +18,7 @@ const ManageAllOrders = ({data}) => {
     }
     return (
         <div>
-            <h2>My AOrders: {orders.length}</h2>
+            <h2 className='text-2xl my-4 text-center'>My Orders: {orders.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

@@ -18,7 +18,7 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/tools/${purchaseId}`
+        const url = `https://nameless-citadel-30933.herokuapp.com/tools/${purchaseId}`
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -33,9 +33,11 @@ const Purchase = () => {
         console.log(event.target.value);
         if (quantity >= minimumOrder && quantity <= availableQuantity  ){
             setAgree(true);
+            setError('')
         }
         else{
             setAgree(false)
+            setError('quantity error')
         }
 
     }
@@ -63,7 +65,7 @@ const Purchase = () => {
             setError('');
 
             const restAvailableQuantity = availableQuantity - order.quantity;
-            fetch('http://localhost:5000/order', {
+            fetch('https://nameless-citadel-30933.herokuapp.com/order', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -73,7 +75,7 @@ const Purchase = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    fetch(`http://localhost:5000/tools/${purchaseId}`, {
+                    fetch(`https://nameless-citadel-30933.herokuapp.com/tools/${purchaseId}`, {
                         method: 'PATCH',
                         headers: {
                             'content-type': 'application/json'
@@ -89,7 +91,7 @@ const Purchase = () => {
                 })
         }
         else{
-            setError('Quantity should be order.quantity > minimumOrder && availableQuantity > order quantity ')
+            setError(' ')
         }
         event.target.reset();
     }

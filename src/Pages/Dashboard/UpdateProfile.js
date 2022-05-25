@@ -38,7 +38,7 @@ const UpdateProfile = () => {
                     }
                     console.log(profile);
                     // send to your database 
-                    fetch(`http://localhost:5000/profile/${email}`, {
+                    fetch(`https://nameless-citadel-30933.herokuapp.com/profile/${email}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'

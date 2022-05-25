@@ -13,7 +13,7 @@ const MyOrders = ({data}) => {
     const [isReload, setIsReload] = useState(true);
     const navigate = useNavigate();
     // const { isLoading, error, data: orders, refetch } = useQuery(['orders'], () =>
-    //     fetch(`http://localhost:5000/order/${email}`, {
+    //     fetch(`https://nameless-citadel-30933.herokuapp.com/order/${email}`, {
     //         method: 'GET',
     //         headers: {
     //             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -28,7 +28,7 @@ const MyOrders = ({data}) => {
     // }
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/order/${email}`, {
+        fetch(`https://nameless-citadel-30933.herokuapp.com/order/${email}`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -42,7 +42,7 @@ const MyOrders = ({data}) => {
     }, [isReload,email])
 
     const handleDelete = id =>{
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://nameless-citadel-30933.herokuapp.com/order/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -58,7 +58,7 @@ const MyOrders = ({data}) => {
 
     return (
         <div>
-            <h2>My Orders: {orders?.length}</h2>
+            <h2 className='text-2xl my-4 text-center'>My Orders: {orders?.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
