@@ -15,7 +15,7 @@ const Tool = ({ tool}) => {
                 <img src={img} alt="Shoes" className="rounded-xl" />
             </figure>
             <div className="card-body items-center text-left">
-                <h2 className="card-title text-2xl uppercase">{name}</h2>
+                <h2 className="card-title text-xl uppercase">{name}</h2>
                <div className='text-left m-4'>
                     <p className='mt-2'><span className='text-lg font-bold mr-2'>Price:$</span>{price} per unit</p>
                     <p className='mt-2'><span className='text-lg font-bold mr-2'>Available Quantity:</span> {availableQuantity}</p>

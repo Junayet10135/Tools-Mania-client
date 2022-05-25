@@ -41,15 +41,15 @@ const MyProfile = () => {
 
     return (
         <div>
-            <div className='flex justify-between my-5 p-5 bg-lime-300 rounded-md'>
+            <div className='flex justify-between my-5 p-5 shadow-xl rounded-md'>
                 <div>
-                    <h2 className='text-3xl'><span className='text-4xl'>Name: </span> {user?.displayName}</h2>
-                    <h2 className='text-3xl'> <span className='text-4xl'>Email:  </span>{user?.email}</h2>
+                    <h2 className='text-3xl'><span className='text-4xl font-bold uppercase'>Name: </span> {user?.displayName}</h2>
+                    <h2 className='text-3xl'> <span className='text-4xl font-bold uppercase'>Email:  </span>{user?.email}</h2>
                 </div>
                 <div className='avatar online'>
                     <div className='w-24 rounded-full'>
                         <img src={profiles?.image ?
-                            profiles.image :
+                            profiles.img :
                             user?.photoURL ?
                                 user.photoURL
                                 :
@@ -59,9 +59,14 @@ const MyProfile = () => {
                 </div>
             </div>
             <div>
-                <h2>Education: {profiles?.education ? profiles.education : 'no value'}</h2>
+                <h2 className='text-2xl shadow-xl p-4 my-4'><span className='font-bold uppercase'>Education: </span> {profiles?.education ? profiles.education : 'no value'}</h2>
+                <h2 className='text-2xl shadow-xl p-4 my-4'><span className='font-bold uppercase'>location:</span> {profiles?.location ? profiles.location : 'no value'}</h2>
+                <h2 className='text-2xl shadow-xl p-4 my-4'><span className='font-bold uppercase'>LinkedIn Link:</span> {profiles?.linkedIn ? profiles.linkedIn : 'no value'}</h2>
+                <h2 className='text-2xl shadow-xl p-4 my-4'><span className='font-bold uppercase'>number:</span> {profiles?.number ? profiles.number : 'no value'}</h2>
+
+
             </div>
-            <button onClick={handleUpdate} class="btn btn-sm btn-success text-white">update</button>
+            <button className='mt-4' onClick={handleUpdate} class="btn btn-sm btn-success text-white">update Info</button>
         </div>
     );
 };

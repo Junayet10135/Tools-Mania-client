@@ -12,7 +12,7 @@ const UpdateProfile = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
 
-    const imageStorageKey = '65ba121eec3fcd4ef7e47dd2bb730502';
+    const imageStorageKey = '4017139c462dc0e353a80d0a87f24a1c';
 
     const onSubmit = async data => {
         const image = data.img[0];
@@ -27,20 +27,23 @@ const UpdateProfile = () => {
             .then(res => res.json())
             .then(result => {
                 // console.log('imbb',result);
-                if (result.success) {
-                    const img = result.data.url;
-                    const tools = {
+                
+                    const img = result?.data?.url;
+                    const profile = {
                         education: data.education,
-                        
+                        location:data.location,
+                        number:data.pNumber,
+                        linkedIn:data.linkedIn,
+                        img:img
                     }
-                    console.log(tools);
+                    console.log(profile);
                     // send to your database 
                     fetch(`http://localhost:5000/profile/${email}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
                         },
-                        body: JSON.stringify(tools)
+                        body: JSON.stringify(profile)
                     })
                         .then(res => res.json())
                         .then(data => {
@@ -54,7 +57,7 @@ const UpdateProfile = () => {
                             }
                         })
 
-                }
+                
 
             })
         }
@@ -79,85 +82,65 @@ const UpdateProfile = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.education?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
-                        <span className="label-text">Price</span>
+                        <span className="label-text">Location</span>
                     </label>
                     <input
                         type="text"
-                        placeholder="Tool Price with Piece"
+                        placeholder="Your Location"
                         className="input input-bordered w-full max-w-xs"
-                        {...register("price", {
+                        {...register("location", {
                             required: {
                                 value: true,
-                                message: 'price is Required'
+                                message: 'location is Required'
                             }
                         })}
                     />
                     <label className="label">
-                        {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
+                        {errors.location?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
-                        <span className="label-text">Available Quantity</span>
+                        <span className="label-text">Phone Number</span>
                     </label>
                     <input
                         type="number"
-                        placeholder="Tool Quantity"
+                        placeholder="Your Phone Number"
                         className="input input-bordered w-full max-w-xs"
-                        {...register("availableQuantity", {
+                        {...register("pNumber", {
                             required: {
                                 value: true,
-                                message: 'availableQuantity is Required'
+                                message: 'number is Required'
                             }
                         })}
                     />
                     <label className="label">
-                        {errors.availableQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.availableQuantity.message}</span>}
+                        {errors.number?.type === 'required' && <span className="label-text-alt text-red-500">{errors.availableQuantity.message}</span>}
                     </label>
                 </div>
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
-                        <span className="label-text">Minimum Order</span>
+                        <span className="label-text">LinkedIn Profile</span>
                     </label>
                     <input
-                        type="number"
-                        placeholder="Minimum Order "
-                        className="input input-bordered w-full max-w-xs"
-                        {...register("minimumOrder", {
-                            required: {
-                                value: true,
-                                message: 'minimumOrder is Required'
-                            }
-                        })}
-                    />
-                    <label className="label">
-                        {errors.minimumOrder?.type === 'required' && <span className="label-text-alt text-red-500">{errors.minimumOrder.message}</span>}
-                    </label>
-                </div>
-
-                <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Description</span>
-                    </label>
-                    <textarea
                         type="text"
-                        placeholder="Tool Description"
+                        placeholder="LinkedIn Profile "
                         className="input input-bordered w-full max-w-xs"
-                        {...register("description", {
+                        {...register("linkedIn", {
                             required: {
                                 value: true,
-                                message: 'description is Required'
+                                message: 'linkedIn is Required'
                             }
                         })}
                     />
                     <label className="label">
-                        {errors.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors.description.message}</span>}
+                        {errors.linkedIn?.type === 'required' && <span className="label-text-alt text-red-500">{errors.minimumOrder.message}</span>}
                     </label>
                 </div>
 
@@ -171,7 +154,7 @@ const UpdateProfile = () => {
                         className="input input-bordered w-full max-w-xs"
                         {...register("img", {
                             required: {
-                                value: true,
+                                value: false,
                                 message: 'Image is Required'
                             }
                         })}
