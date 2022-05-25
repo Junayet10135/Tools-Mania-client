@@ -41,6 +41,19 @@ const MyOrders = ({data}) => {
             })
     }, [isReload,email])
 
+    const handleDelete = id =>{
+        fetch(`http://localhost:5000/order/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount) {
+                    toast.success(` deleted.`)
+                }
+            })
+    }
+
    // const remaining = orders.filter(order => order.email === email);
 
     return (
@@ -67,17 +80,29 @@ const MyOrders = ({data}) => {
                                 <td>{order.tool}</td>
                                 <td>{order.quantity}</td>
                                 <td>{order.address}</td>
-                                <td><button class="btn btn-xs btn-success text-white">pay</button>
+                                <td><Link to={`/dashboard/payment/${order._id}`}><button class="btn btn-xs btn-success text-white">pay</button></Link>
                                 </td>
-                                <td> <button class="btn btn-xs btn-error text-white">delete</button>
+                                <td> <label for="my-modal" class="btn btn-xs btn-error text-white modal-button">delete</label>
                                 </td>
+                                <input type="checkbox" id="my-modal" class="modal-toggle" />
+                                <div class="modal">
+                                    <div class="modal-box">
+                                        <h3 class="font-bold text-lg">Are you sure you want to delete {order.tool}!</h3>
+                                        <div class="modal-action">
+                                            <button onClick={() => handleDelete(order._id)} class="btn btn-xs btn-error">Delete</button>
+                                            <label for="my-modal" class="btn btn-xs">Cancel</label>
+                                        </div>
+                                    </div>
+                                </div>
                                 </tr>)
                         }
 
 
                     </tbody>
                 </table>
+                
             </div>
+            
         </div>
     );
 };
