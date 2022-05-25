@@ -13,7 +13,7 @@ const BusinessSummary = () => {
     
     return (
         <div className='py-10'>
-            <h2 className='text-3xl bg-secondary text-white p-2 text-center'>Business Section</h2>
+            <h2 className='text-3xl bg-secondary text-white p-2 text-center'>Business Summary</h2>
             {/* <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 pt-10'>
                 <Summary cardTitle="Opening Hours" bgClass="bg-gradient-to-r from-secondary to-primary" img={banner}></Summary>
                 <Summary cardTitle="Our Locations" bgClass="bg-green-500" img={banner}></Summary>

@@ -13,7 +13,7 @@ const Tools = () => {
 
     return (
         <div className='my-10'>
-            <h2 className='text-3xl bg-secondary rounded text-white p-2 text-center mb-10'>There is Tools Section </h2>
+            <h2 className='text-3xl bg-secondary rounded text-white p-2 text-center mb-10'>Tools  </h2>
 
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
