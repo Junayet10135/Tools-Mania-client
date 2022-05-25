@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 
 const ManageAllOrders = ({data}) => {
+    const [delivered, setDelivered] = useState(false);
     const { isLoading, error, data: orders, refetch } = useQuery(['orders'], () =>
         fetch('http://localhost:5000/order')
             .then(res => res.json())
@@ -10,6 +11,10 @@ const ManageAllOrders = ({data}) => {
 
     if (isLoading) {
         return <Loading></Loading>
+    }
+
+    const handleDeliverd =(id)=>{
+        setDelivered(true);
     }
     return (
         <div>
@@ -24,6 +29,7 @@ const ManageAllOrders = ({data}) => {
                             <th>quantity</th>
                             <th>address</th>
                             <th>Payment</th>
+                            <th>State</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +40,16 @@ const ManageAllOrders = ({data}) => {
                                 <td>{order.tool}</td>
                                 <td>{order.quantity}</td>
                                 <td>{order.address}</td>
+                                <td>{
+                                    <button class="btn btn-xs btn-success text-white">paid</button>
+                                
+                                }</td>
+                                <td>{
+                                    !delivered? 
+                                        <button onClick={()=>handleDeliverd(order._id)} class="btn btn-xs btn-error text-white">delivery</button>
+                                        :
+                                        <button class="btn btn-xs btn-success text-white">delivered</button>
+                                }</td>
                             </tr>)
                         }
 

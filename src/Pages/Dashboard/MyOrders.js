@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
@@ -8,8 +9,9 @@ import Loading from '../Shared/Loading';
 const MyOrders = ({data}) => {
     const [user] = useAuthState(auth);
     const email = user?.email;
-    const [orders, setOrders] = useState([]);
+     const [orders, setOrders] = useState([]);
     const [isReload, setIsReload] = useState(true);
+    const navigate = useNavigate();
     // const { isLoading, error, data: orders, refetch } = useQuery(['orders'], () =>
     //     fetch(`http://localhost:5000/order/${email}`, {
     //         method: 'GET',
@@ -43,7 +45,7 @@ const MyOrders = ({data}) => {
 
     return (
         <div>
-            <h2>My Orders: {orders.length}</h2>
+            <h2>My Orders: {orders?.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -59,13 +61,13 @@ const MyOrders = ({data}) => {
                     </thead>
                     <tbody>
                         {
-                            orders?.map((order, index) => <tr>
+                            orders.map((order, index) => <tr>
                                 <th>{index + 1}</th>
                                 <td>{order.name}</td>
                                 <td>{order.tool}</td>
                                 <td>{order.quantity}</td>
                                 <td>{order.address}</td>
-                                <td> <button class="btn btn-xs btn-success text-white">pay</button>
+                                <td><button class="btn btn-xs btn-success text-white">pay</button>
                                 </td>
                                 <td> <button class="btn btn-xs btn-error text-white">delete</button>
                                 </td>

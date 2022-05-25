@@ -23,6 +23,7 @@ import NotFound from './Pages/Shared/NotFound';
 import RequireAdmin from './Pages/LogIn/RequireAdmin';
 import UpdateProfile from './Pages/Dashboard/UpdateProfile';
 import MyPortfolio from './Pages/My Portfolio/MyPortfolio';
+import Payment from './Pages/Payment/Payment';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/payment/:id' element={<Payment></Payment>}></Route>
         <Route path='/purchase/:purchaseId' element={
           <RequireAuth>
             <Purchase></Purchase>
