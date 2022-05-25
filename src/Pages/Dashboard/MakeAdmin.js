@@ -16,10 +16,11 @@ const MakeAdmin = ({data}) => {
         return <Loading></Loading>
     }
 
-    const handleAdmin =()=>{
-
-        fetch(`https://nameless-citadel-30933.herokuapp.com/user/admin/${u.email}`, {
-            method: 'PUT'
+    const handleAdmin =(email)=>{
+        console.log(email);
+        fetch(`https://nameless-citadel-30933.herokuapp.com/user/admin/${email}`, {
+            method: 'PUT',
+            
         })
         .then(res => res.json())
         .then(data =>{
@@ -45,7 +46,7 @@ const MakeAdmin = ({data}) => {
                             users.map((user, index) => <tr>
                                 <th>{index + 1}</th>
                                 <td>{user.email}</td>
-                                <td>{user?.role !== 'admin' && <button onClick={handleAdmin} class="btn btn-xs btn-success text-white">Make Admin</button>}</td>
+                                <td>{user?.role !== 'admin' && <button onClick={() => handleAdmin(user.email)} class="btn btn-xs btn-success text-white">Make Admin</button>}</td>
                             </tr>)
                         }
 
